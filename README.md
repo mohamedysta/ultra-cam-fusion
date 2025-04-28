@@ -71,10 +71,12 @@ so YOLO or other vision code ignores that zone.
 
 Make sure the sensor is matte-black or cover shiny metal with tape, otherwise the camera’s auto-exposure may hunt.
 
+---
 Any hardware movement, even 1 mm, invalidates T sc—so finish all drilling/gluing before STEP 4.
---------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------
 
 ## 3. Repository Layout
+```
 ultra-cam-fusion/
 │
 ├─ arduino/ # .ino firmware
@@ -89,7 +91,7 @@ ultra-cam-fusion/
 ├─ docs/ # report & figures
 ├─ media/ # demo video (Git LFS)
 └─ README.md
-
+```
 
 ---
 
@@ -118,17 +120,20 @@ python python\calc_Tsc.py
 python python\live_projection.py --port COM4          #(replace COM4 with the actual port; use /dev/ttyACM0 on Linux)
 ```
 ## 5. Calibration Details
-Intrinsic K & distortion
+- Intrinsic K & distortion
 calib_capture.py detects a chessboard with --rows, --cols, --square options
 → saves data/camera_params.npz.
-Extrinsic Tsc
-Place a visible reflector, record ≥3 correspondences in calc_Tsc.py, run to save data/T_sc.npy.
+- Extrinsic Tsc
+ Place a visible reflector, record ≥3 correspondences in calc_Tsc.py, run to save data/T_sc.npy.
 
--------------------
 
-import cv2
 
 ## code addition to sweep between cameras -->
+
+```
+import cv2
+
+
  0 for laptop cam, 1 for iPhone camera (via iVCam)
 cam_index = 0  # Start with laptop cam
 
@@ -153,6 +158,7 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+```
 ------------------------------------------
 
 
