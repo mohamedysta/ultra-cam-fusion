@@ -80,6 +80,32 @@ cv2.destroyAllWindows()
       
 ---
 
+##
+-----------------------------------------------------------------------------------------------------------------------------
+Change STEP or delay(30) to balance scan speed vs. stability.
+OPTION 1 – Let it appear (easiest)
+─────────────────────────────────
+• Mount the webcam 10–20 cm behind the HC-SR04, lens only a-couple of centimetres above the sensor.
+• The sensor body will sit at the very bottom of the image—like a car dashboard in a dash-cam.
+• All calibration and projection still work, because T sc already encodes the exact offset.
+OPTION 2 – Raise the camera a bit
+─────────────────────────────────
+• Keep the camera directly behind the sensor but mount it 5–6 cm higher.
+• Tilt it downward a few degrees so its optical axis and the ultrasonic axis still intersect 1–2 m out.
+• Now the sensor body is outside the FOV; only the sound cone region remains visible.
+If the sensor does appear, you can mask it:
+
+Python
+
+mask = np.ones(frame.shape[:2], dtype=np.uint8)*255
+cv2.rectangle(mask, (0, frame.shape[0]-50), (frame.shape[1], frame.shape[0]), 0, -1)
+frame = cv2.bitwise_and(frame, frame, mask=mask)
+so YOLO or other vision code ignores that zone.
+
+Make sure the sensor is matte-black or cover shiny metal with tape, otherwise the camera’s auto-exposure may hunt.
+
+Any hardware movement, even 1 mm, invalidates T sc—so finish all drilling/gluing before STEP 4.
+--------------------------------------------------------------------------------------------------------
 
 ## 3. Repository Layout
 ultra-cam-fusion/
