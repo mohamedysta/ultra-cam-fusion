@@ -1,4 +1,6 @@
-# Byte-compiled / optimized / DLL files
+###############################################################################
+# 1)  GitHub “Python” template  (unchanged – your pasted content)
+###############################################################################
 __pycache__/
 *.py[cod]
 *$py.class
@@ -26,8 +28,6 @@ wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -52,12 +52,12 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
+# Django stuff
 *.log
 local_settings.py
 db.sqlite3
 
-# Flask stuff:
+# Flask stuff
 instance/
 .webassets-cache
 
@@ -86,7 +86,7 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
-# Environments
+# Virtual-envs
 .env
 .venv
 env/
@@ -95,20 +95,45 @@ ENV/
 env.bak/
 venv.bak/
 
-# Spyder project settings
+# Spyder / Rope / etc.
 .spyderproject
 .spyproject
-
-# Rope project settings
 .ropeproject
 
-# mkdocs documentation
+# mkdocs
 /site
 
-# mypy
+# mypy / pyre
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
-# Pyre type checker
 .pyre/
+
+###############################################################################
+# 2)  Extra ignores for THIS PROJECT
+###############################################################################
+# VS Code / PlatformIO
+.vscode/
+.pio/               # PlatformIO build dir
+
+# Arduino build products (when using Arduino CLI or VS Code)
+*.elf
+*.hex
+*.eep
+*.map
+*.bin
+
+# Calibration & runtime artefacts that are RE-generated
+data/camera_params.npz
+data/T_sc.npy
+data/*.csv
+data/*.log
+
+# Large media files that should go through Git LFS instead
+media/*.mp4
+media/*.mov
+media/*.avi
+
+# OS cruft
+Thumbs.db
+.DS_Store
