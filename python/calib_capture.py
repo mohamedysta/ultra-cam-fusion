@@ -9,7 +9,11 @@ objp = np.zeros((args.rows*args.cols,3),np.float32)
 objp[:,:2] = np.mgrid[0:args.cols,0:args.rows].T.reshape(-1,2)*args.square
 obj_pts, img_pts = [], []
 
-cap = cv2.VideoCapture(0)
+cam_index = 1 #put 0 to use the cam of the laptop
+cap = cv2.VideoCapture(cam_index) 
+
+
+
 print('SPACE = capture, ESC = finish')
 while True:
     ok, frame = cap.read()
