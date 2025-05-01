@@ -4,7 +4,7 @@
 Project-based tutorial that **projects an object’s physical 3-D position—measured with an HC-SR04 ultrasonic sensor mounted on a servo—onto a live USB-camera feed**.
 
 <p align="center">
-  <img src="docs/figures/overlay_example.png" width="600">    #name the photo as overlay_example.png
+  <img src="docs/figures/overlay_example.png" width="600">  
 </p>
 
 ---
