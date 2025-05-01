@@ -1,12 +1,21 @@
-import cv2, serial, numpy as np, math, argparse
+import cv2, serial, numpy as np, math, argparse, sys
+from pathlib import Path
+
 parser = argparse.ArgumentParser()
-parser.add_argument('--port',default='COM4'); args = parser.parse_args()
+parser.add_argument('--port', default='COM4'); args = parser.parse_args()
 
-data = np.load('../data/camera_params.npz')
+# Use absolute paths for data files
+base_dir = Path(__file__).parent.parent / 'data'
+data = np.load(base_dir / 'camera_params.npz')
 K, dist = data['K'], data['dist']
-T_sc = np.load('../data/T_sc.npy')
+T_sc = np.load(base_dir / 'T_sc.npy')
 
-ser = serial.Serial(args.port,115200,timeout=0.1)
+try:
+    ser = serial.Serial(args.port, 115200, timeout=0.1)
+except serial.SerialException as e:
+    print(f"Error: Could not open serial port {args.port}. {e}")
+    sys.exit(1)
+
 cap = cv2.VideoCapture(0)
 
 def sens2cart(th,r):
